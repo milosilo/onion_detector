@@ -10,7 +10,7 @@ The log file is located in the same folder as the script file.
 
 A timed out message for the onion means it was not detected as up. Do not go below 1 for this setting.
 
-When a onion site is detected, the sites code from hte get request will be printed and the onion site will be logged in the log file.
+When a onion site is detected, the sites code from the get request will be printed and the onion site will be logged in the log file.
 
 Happy onion scanning!
 
@@ -47,7 +47,7 @@ proxies = {
 print("\nOnion Detector, 2018\n")
 print('Questions and comments welcome at: https://github.com/milosilo/onion_detector')
 print("This script creates a random onion site and uses a http GET request to if it is live.\nIf a site is detected, site code will be diplayed and it will be logged into a file for you to further investigate.\n")
-print("\nA brute-force onion scanner created because why not?\n")
+print("\nA bruteforce onion scanner created because why not?\n")
 print("\n\n\n'Ambitous, yet rubbish.'")
 print("\n                  -Clarkson\n")
 print("\nPress 'CTRL + C' to exit\n\nResults:")
