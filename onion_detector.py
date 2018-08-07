@@ -47,7 +47,7 @@ proxies = {
     }
 print("\nOnion Detector, 2018\n")
 print('Questions and comments welcome at: https://github.com/milosilo/onion_detector')
-print("This script creates a random onion site and uses a http GET request to if it is live.\nIf a site is detected, site code will be diplayed and it will be logged into a file for you to further investigate.\n")
+print("This script creates a random onion site and uses a http GET request to if it is live.\nIf a site is detected, site code will be displayed and it will be logged into a file for you to further investigate.\n")
 print("\nA bruteforce onion scanner created because why not?\n")
 print("\n\n\n'Ambitous, yet rubbish.'")
 print("\n                  -Clarkson\n")
