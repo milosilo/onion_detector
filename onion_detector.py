@@ -1,6 +1,8 @@
 '''
-Onion Scanner v1.0
+Onion Scanner v1.1
 Python 3
+Questions and comments welcome at:
+https://github.com/milosilo/onion_detector
 
 Scanner generates random onion site, tries to connect, and stores successfull connections in a log file.
 
@@ -28,6 +30,7 @@ import sys
 #Settings:
 #Log File Name:
 logfile = 'onionsdetected.txt'
+onion_count = 0
 
 #values used in site address space:
 domain_values = "abcdefghijklmnopqrstuvwxyz234567"
@@ -42,11 +45,12 @@ proxies = {
     'http': 'socks5h://127.0.0.1:' + proxy,
     }
 print("\nOnion Detector, 2018\n")
+print('Questions and comments welcome at: https://github.com/milosilo/onion_detector')
 print("This script creates a random onion site and uses a http GET request to if it is live.\nIf a site is detected, site code will be diplayed and it will be logged into a file for you to further investigate.\n")
 print("\nA brute-force onion scanner created because why not?\n")
 print("\n\n\n'Ambitous, yet rubbish.'")
 print("\n                  -Clarkson\n")
-print("\nPress 'CTRL + C' to exit")
+print("\nPress 'CTRL + C' to exit\n\nResults:")
 
 #main loop:
 with open(logfile, 'a') as f:
@@ -55,6 +59,7 @@ with open(logfile, 'a') as f:
             try:        
                 onion = "".join([choice(domain_values) for _ in range(16)])#Creates random onion
                 fullURL = "http://" + onion + ".onion"#Packages onion into url for request
+                onion_count = onion_count + 1
                 data = requests.get(fullURL, proxies=proxies, timeout=time).text#Data request
                 print(data)#Print of data
                 dataEntry = fullURL
@@ -67,7 +72,10 @@ with open(logfile, 'a') as f:
                 print(e)
                 dataEntry = e
             except KeyboardInterrupt:#exit
-                print ('\nFor results, Check:\n' + logfile + '\nThis is like finding a needle in a haystack.\nGood luck!' )
+                print ('\nScan exited by user input.\n\nOnions Checked: ' + str(onion_count) + '\nCheck ' + logfile + ' for detected onions.\n')
+                print('\nQuestions and comments welcome at: https://github.com/milosilo/onion_detector\n\n')
+                print("You were so preocupied with whether or not you could,\nyou didn't stop to think if you should.")
+                print('\n                                  -Ian Malcom\n\n ')
                 sys.exit()
 
 sys.exit()
