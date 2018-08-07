@@ -10,7 +10,7 @@ The log file is located in the same folder as the script file.
 
 A timed out message for the onion means it was not detected as up. Do not go below 1 for this setting.
 
-When a onion site is detected, the sites code from the get request will be printed and the onion site will be logged in the log file.
+When a onion site is detected, the sites code from hte get request will be printed and the onion site will be logged in the log file.
 
 Happy onion scanning!
 
@@ -31,6 +31,7 @@ import sys
 #Log File Name:
 logfile = 'onionsdetected.txt'
 onion_count = 0
+onions_found = 0
 
 #values used in site address space:
 domain_values = "abcdefghijklmnopqrstuvwxyz234567"
@@ -64,6 +65,7 @@ with open(logfile, 'a') as f:
                 print(data)#Print of data
                 dataEntry = fullURL
                 print(fullURL + " is active \n")
+                onions_found = onions_found + 1
                 f.write(dataEntry + "\n")
             #Exception City
             except requests.exceptions.ConnectTimeout:
@@ -72,7 +74,8 @@ with open(logfile, 'a') as f:
                 print(e)
                 dataEntry = e
             except KeyboardInterrupt:#exit
-                print ('\nScan exited by user input.\n\nOnions Checked: ' + str(onion_count) + '\nCheck ' + logfile + ' for detected onions.\n')
+                print ('\nScan exited by user input.\n\nOnions Checked: ' + str(onion_count) + '\nOnions Found: ' + str(onions_found))
+                print('\n\nCheck ' + logfile + ' for detected onions.\n')
                 print('\nQuestions and comments welcome at: https://github.com/milosilo/onion_detector\n\n')
                 print("You were so preocupied with whether or not you could,\nyou didn't stop to think if you should.")
                 print('\n                                  -Ian Malcom\n\n ')
